@@ -1,14 +1,10 @@
 ### Objetivo
  - Entender um pouco mais sobre o ecossistema de java web com o framework Spring boot
- - Projeto para controle de estacionamento (vaga de estacionamento parking spot)
- - Contexto: Condominio, moradores possuem Vagas fixas de acordo com o apartamento, cada morador cadastra um veiculo
-   - Veiculo: placa (licensePlateCar), modelo, cor, marca, registro do cadastro do veiculo no sitema de controle
-   - apartamento/bloco: identificador (numeros e letras)
-   - Vaga: numero da vaga (parkingSpotNumber): campo unico, não nulo e letras enumeros
 
 ### Pré- requisitos
- - Java JDK >= 17
- - PostgresSQL
+ - Java JDK >= 17 + variaveis ambiente
+ - Gradle + variaveis ambiente
+ - Docker: Mysql, PostgresSQL
  - Postman/Insomnia
 
 ### Tecnologias
