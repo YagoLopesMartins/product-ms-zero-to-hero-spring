@@ -18,6 +18,10 @@
     - Annotations: 
   - PostgreeSQL Driver: SQL
   - Validation: para testar endpoints (não nulo, strings vazias, duplicados etc)
+     - Regras de negocios (Business rules)
+     - Somente possivel criar produtos com preços positivos
+     - Nao é possivel pesquisar rodutos que não estão disponiveis
+     - Nao possivel inserir descrição com menos d e50 caracteres
   - Hateoas: Documentação API (hipermidias, modelo RESTful navegabilidade entre os recursos) extends representationModel
 
 ### Princiapais funcionalidades
