@@ -13,8 +13,6 @@ public class Student {
     @Column
     private Long id;
 
-
-
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_classroom", referencedColumnName = "id")
     private Classroom classroom;
