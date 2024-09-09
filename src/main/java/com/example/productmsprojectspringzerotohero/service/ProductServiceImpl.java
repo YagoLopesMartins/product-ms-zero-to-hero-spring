@@ -34,7 +34,6 @@ public class ProductServiceImpl implements ProductService{
     public List<ProductDTO> getAll() {
         List<Product> products = repository.findAll();
         List<ProductDTO> responses = new ArrayList<>();
-
         products.forEach(product -> {
             ProductDTO response = mapper.map(product, ProductDTO.class);
             responses.add(response);
@@ -47,5 +46,15 @@ public class ProductServiceImpl implements ProductService{
     public Optional<ProductDTO> getById(Long id) {
         Optional<Product> product = repository.findById(id);
         return product.map(value -> mapper.map(value, ProductDTO.class));
+    }
+
+    @Override
+    public boolean inactive(Long id) {
+        Optional<Product> product = repository.findById(id);
+        if(product.isPresent()) {
+            product.get().setAvailable(false);
+            return true;
+        }
+        return false;
     }
 }
