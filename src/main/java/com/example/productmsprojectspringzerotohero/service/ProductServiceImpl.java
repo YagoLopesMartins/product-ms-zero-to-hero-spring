@@ -17,9 +17,11 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private ModelMapper mapper;
+
     @Override
     public Optional<ProductDTO> create(ProductDTO request) {
-        ModelMapper mapper = new ModelMapper();
         Product product = mapper.map(request, Product.class);
         repository.saveAndFlush(product);
 
@@ -30,7 +32,6 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<ProductDTO> getAll() {
-        ModelMapper mapper = new ModelMapper();
         List<Product> products = repository.findAll();
         List<ProductDTO> responses = new ArrayList<>();
 
