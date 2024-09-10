@@ -8,28 +8,22 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
+import java.util.List;
 import java.util.Optional;
 
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
+
 @SpringBootTest
+@Sql(executionPhase = BEFORE_TEST_METHOD, scripts = {"classpath:clear-database.sql"})
 public class ProductServiceTest {
     @Autowired
     private ProductService service;
 
-        //    private ProductDTO request;
-        //
-        //    @BeforeEach
-        //    public void setUp(){
-        //        request = new ProductDTO();
-        //        request.setName("Iphone prox max 2");
-        //        request.setDescription("Smarthphone asdasdasdasdasd asdasd asda sd asda sdasdasdasdas asdasdasda");
-        //        request.setPrice(5000.00);
-        //    }
-        //
-
     @BeforeAll
     public static void setUp(){
-      FixtureFactoryLoader.loadTemplates("br.com.youtube.productms.fixture");
+      FixtureFactoryLoader.loadTemplates("com.example.productmsprojectspringzerotohero.fixture");
     }
 
     @Test
@@ -40,5 +34,11 @@ public class ProductServiceTest {
         Assertions.assertEquals(response.get().getName(), request.getName());
         Assertions.assertEquals(response.get().getDescription(), request.getDescription());
         Assertions.assertEquals(response.get().getPrice(), request.getPrice());
+    }
+
+    @Test
+    public void shouldGetAllProducts(){
+         List<ProductDTO> response = service.getAll();
+        System.out.println(response.size());
     }
 }
